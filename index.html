@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Homepage</title>
+    <title>Your Name - 副教授，硕士生导师 - 某某大学计算机学院</title>
+    <meta name="description" content="Your Name - 副教授，硕士生导师，研究方向：知识图谱、推荐系统、自然语言处理、机器学习">
+    <meta name="keywords" content="计算机科学, 人工智能, 知识图谱, 推荐系统, 机器学习, 自然语言处理">
+    <meta name="author" content="Your Name">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Your Name - 副教授，硕士生导师">
+    <meta property="og:description" content="某某大学计算机学院副教授，研究方向：知识图谱、推荐系统、自然语言处理、机器学习">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-website.com">
+    
+    <!-- 字体预加载优化 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #2563eb;
@@ -26,8 +39,98 @@
             --border: #e2e8f0;
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
             --radius: 8px;
             --max-width: 880px;
+            --transition: all 0.3s ease;
+        }
+
+        /* 暗色模式变量 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #60a5fa;
+                --primary-dark: #3b82f6;
+                --primary-light: #93c5fd;
+                --accent: #10b981;
+                --accent-light: #34d399;
+                --warning: #f87171;
+                --orange: #fbbf24;
+                --purple: #a78bfa;
+                --text-primary: #f1f5f9;
+                --text-secondary: #cbd5e1;
+                --text-muted: #94a3b8;
+                --bg-body: #0f172a;
+                --bg-white: #1e293b;
+                --bg-light: #334155;
+                --border: #475569;
+                --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+                --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4);
+                --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
+            }
+            
+            body {
+                color-scheme: dark;
+            }
+        }
+
+        /* 打印样式 */
+        @media print {
+            :root {
+                --text-primary: #000000;
+                --text-secondary: #333333;
+                --text-muted: #666666;
+                --bg-body: #ffffff;
+                --bg-white: #ffffff;
+                --bg-light: #f5f5f5;
+                --border: #dddddd;
+            }
+            
+            .nav, 
+            .theme-toggle,
+            .reading-progress,
+            .footer-links,
+            .pub-links,
+            .contact-item:hover,
+            .service-tag:hover,
+            .news-tag,
+            .pub-tag,
+            .student-award,
+            .project-role {
+                display: none !important;
+            }
+            
+            .container {
+                padding-top: 20px !important;
+                padding-bottom: 20px !important;
+            }
+            
+            .profile-photo {
+                width: 100px !important;
+                height: 100px !important;
+            }
+            
+            .section-title {
+                margin-bottom: 10px !important;
+            }
+            
+            .section {
+                margin-bottom: 30px !important;
+            }
+            
+            a {
+                color: var(--text-primary) !important;
+                text-decoration: none !important;
+            }
+            
+            .profile-contact {
+                justify-content: flex-start !important;
+            }
+            
+            .contact-item {
+                background: none !important;
+                padding: 0 !important;
+                margin-right: 15px !important;
+            }
         }
 
         * {
@@ -46,25 +149,100 @@
             color: var(--text-primary);
             line-height: 1.7;
             font-size: 15px;
+            transition: var(--transition);
         }
 
         a {
             color: var(--primary);
             text-decoration: none;
-            transition: all 0.2s;
+            transition: var(--transition);
         }
 
         a:hover {
             color: var(--primary-dark);
         }
 
-        /* Navigation - Zitai Style */
+        /* 可访问性：跳过导航链接 */
+        .skip-to-main {
+            position: absolute;
+            top: -40px;
+            left: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            z-index: 1001;
+            text-decoration: none;
+        }
+
+        .skip-to-main:focus {
+            top: 10px;
+            outline: 2px solid var(--primary-dark);
+            outline-offset: 2px;
+        }
+
+        /* 焦点样式 */
+        a:focus,
+        button:focus,
+        .contact-item:focus,
+        .service-tag:focus,
+        .pub-link:focus {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+            border-radius: 4px;
+        }
+
+        /* 阅读进度条 */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            transform-origin: 0 50%;
+            transform: scaleX(0);
+            z-index: 99;
+            transition: transform 0.1s;
+        }
+
+        /* 主题切换按钮 */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 44px;
+            height: 44px;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 98;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-primary);
+        }
+
+        /* Navigation */
         .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(255,255,255,0.95);
+            background: rgba(var(--bg-white-rgb), 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 100;
@@ -107,7 +285,7 @@
             padding: 100px 24px 60px;
         }
 
-        /* Profile Section - Zitai Style */
+        /* Profile Section */
         .profile {
             display: flex;
             gap: 36px;
@@ -128,6 +306,7 @@
             font-weight: 600;
             flex-shrink: 0;
             box-shadow: var(--shadow-md);
+            overflow: hidden;
         }
 
         .profile-photo img {
@@ -135,6 +314,12 @@
             height: 100%;
             object-fit: cover;
             border-radius: var(--radius);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .profile-photo img.loaded {
+            opacity: 1;
         }
 
         .profile-info h1 {
@@ -173,7 +358,8 @@
             border-radius: 20px;
             font-size: 0.85rem;
             color: var(--text-secondary);
-            transition: all 0.2s;
+            transition: var(--transition);
+            text-decoration: none;
         }
 
         .contact-item:hover {
@@ -321,7 +507,7 @@
             border-radius: var(--radius);
             padding: 18px 20px;
             margin-bottom: 12px;
-            transition: all 0.2s;
+            transition: var(--transition);
         }
 
         .pub-item:hover {
@@ -435,7 +621,8 @@
             font-size: 0.8rem;
             font-family: 'JetBrains Mono', monospace;
             color: var(--text-muted);
-            transition: all 0.2s;
+            transition: var(--transition);
+            text-decoration: none;
         }
 
         .pub-link:hover {
@@ -489,7 +676,7 @@
             flex-shrink: 0;
         }
 
-        /* Services - Zitai Style */
+        /* Services */
         .service-section {
             margin-bottom: 24px;
         }
@@ -514,7 +701,8 @@
             border-radius: 20px;
             font-size: 0.85rem;
             color: var(--text-secondary);
-            transition: all 0.2s;
+            transition: var(--transition);
+            text-decoration: none;
         }
 
         .service-tag:hover {
@@ -646,12 +834,13 @@
             color: var(--primary);
         }
 
-        /* Responsive */
+        /* 响应式设计 */
         @media (max-width: 768px) {
             .profile {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
+                gap: 24px;
             }
 
             .profile-photo {
@@ -688,6 +877,44 @@
             }
         }
 
+        @media (max-width: 480px) {
+            .container {
+                padding: 80px 16px 40px;
+            }
+            
+            .profile-photo {
+                width: 120px;
+                height: 120px;
+                font-size: 2rem;
+            }
+            
+            .profile-info h1 {
+                font-size: 1.7rem;
+            }
+            
+            .pub-tags {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .pub-tag {
+                display: block;
+                margin-bottom: 4px;
+            }
+            
+            .service-list {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .theme-toggle {
+                bottom: 10px;
+                right: 10px;
+                width: 36px;
+                height: 36px;
+            }
+        }
+
         /* Animation */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -700,6 +927,19 @@
     </style>
 </head>
 <body>
+    <!-- 可访问性：跳过导航链接 -->
+    <a href="#main-content" class="skip-to-main">跳过导航，直接进入主内容</a>
+    
+    <!-- 阅读进度条 -->
+    <div class="reading-progress" id="reading-progress"></div>
+    
+    <!-- 主题切换按钮 -->
+    <button class="theme-toggle" id="theme-toggle" aria-label="切换主题">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/>
+        </svg>
+    </button>
+    
     <nav class="nav">
         <div class="nav-inner">
             <span class="nav-name">Your Name</span>
@@ -715,15 +955,16 @@
         </div>
     </nav>
 
-    <main class="container">
-        <!-- ==================== Profile Section - Zitai Wang Style ==================== -->
+    <main class="container" id="main-content">
+        <!-- ==================== Profile Section ==================== -->
         <section class="profile" id="about">
-            <div class="profile-photo">YN</div>
-            <!-- 如果有照片，用下面的代码替换上面的 div：
             <div class="profile-photo">
-                <img src="your-photo.jpg" alt="Your Name">
+                <!-- 使用data-src实现懒加载 -->
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Crect width='160' height='160' fill='%232563eb'/%3E%3Ctext x='50%25' y='50%25' font-size='3rem' font-weight='600' fill='white' text-anchor='middle' dy='.3em'%3EYN%3C/text%3E%3C/svg%3E" 
+                     data-src="your-photo.jpg" 
+                     alt="Your Name" 
+                     class="lazy">
             </div>
-            -->
             <div class="profile-info">
                 <h1>Your Name <span class="cn-name">(中文名)</span></h1>
                 <p class="profile-position">
@@ -731,9 +972,15 @@
                     某某大学 计算机学院
                 </p>
                 <div class="profile-contact">
-                    <span class="contact-item">📧 <a href="mailto:your@email.com">your@email.com</a></span>
-                    <span class="contact-item">🎓 <a href="https://scholar.google.com/" target="_blank">Google Scholar</a></span>
-                    <span class="contact-item">💻 <a href="https://github.com/" target="_blank">GitHub</a></span>
+                    <a href="mailto:your@email.com" class="contact-item">
+                        📧 <span>your@email.com</span>
+                    </a>
+                    <a href="https://scholar.google.com/" target="_blank" class="contact-item">
+                        🎓 <span>Google Scholar</span>
+                    </a>
+                    <a href="https://github.com/" target="_blank" class="contact-item">
+                        💻 <span>GitHub</span>
+                    </a>
                 </div>
                 <p class="profile-bio">
                     在这里写你的个人简介。可以介绍你的教育背景、研究方向、工作经历等。
@@ -888,45 +1135,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 研究方向三 -->
-            <div class="pub-category">
-                <div class="pub-category-title">🎯 研究方向三 世界模型</div>
-                
-                <div class="pub-item">
-                    <div class="pub-title">
-                        <a href="#" target="_blank">Structurally Refined Graph Transformer for Multimodal Recommendation</a>
-                    </div>
-                    <div class="pub-authors">
-                        Shi K (本科生), Zhang Y, <span class="me">Your Name*</span>.
-                    </div>
-                    <div class="pub-venue">IEEE Transactions on Multimedia (TMM), 2025.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag sci-1">SCI一区</span>
-                        <span class="pub-tag ccf-b">CCF B</span>
-                    </div>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-title">
-                        <a href="#" target="_blank">A Unified Generalization Analysis of Re-Weighting and Logit-Adjustment for Imbalanced Learning</a>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Your Name</span>, Xu Q, Yang Z, et al.
-                    </div>
-                    <div class="pub-venue">Neural Information Processing Systems (NeurIPS), 2023.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag ccf-a">CCF A</span>
-                        <span class="pub-tag spotlight">Spotlight 3.1%</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="#" target="_blank" class="pub-link">[Paper]</a>
-                        <a href="#" target="_blank" class="pub-link">[Code]</a>
-                        <a href="#" target="_blank" class="pub-link">[Video]</a>
-                    </div>
-                </div>
-            </div>
-            
         </section>
 
         <!-- ==================== Projects Section ==================== -->
@@ -1038,49 +1246,160 @@
             <div class="service-section">
                 <h3 class="service-title">期刊审稿 / Journal Reviewer</h3>
                 <div class="service-list">
-                    <span class="service-tag">IEEE T-PAMI</span>
-                    <span class="service-tag">IEEE T-KDE</span>
-                    <span class="service-tag">IEEE T-NNLS</span>
-                    <span class="service-tag">IEEE T-MM</span>
-                    <span class="service-tag">ACM TKDD</span>
-                    <span class="service-tag">Information Fusion</span>
+                    <a href="#" class="service-tag">IEEE T-PAMI</a>
+                    <a href="#" class="service-tag">IEEE T-KDE</a>
+                    <a href="#" class="service-tag">IEEE T-NNLS</a>
+                    <a href="#" class="service-tag">IEEE T-MM</a>
+                    <a href="#" class="service-tag">ACM TKDD</a>
+                    <a href="#" class="service-tag">Information Fusion</a>
                 </div>
             </div>
             
             <div class="service-section">
                 <h3 class="service-title">会议审稿 / Conference PC Member</h3>
                 <div class="service-list">
-                    <span class="service-tag">ICML 2025</span>
-                    <span class="service-tag">NeurIPS 2024-25</span>
-                    <span class="service-tag">ICLR 2025</span>
-                    <span class="service-tag">CVPR 2024-25</span>
-                    <span class="service-tag">AAAI 2024-26</span>
-                    <span class="service-tag">ACM MM 2023-25</span>
-                    <span class="service-tag">EMNLP 2024 (AC)</span>
+                    <a href="#" class="service-tag">ICML 2025</a>
+                    <a href="#" class="service-tag">NeurIPS 2024-25</a>
+                    <a href="#" class="service-tag">ICLR 2025</a>
+                    <a href="#" class="service-tag">CVPR 2024-25</a>
+                    <a href="#" class="service-tag">AAAI 2024-26</a>
+                    <a href="#" class="service-tag">ACM MM 2023-25</a>
+                    <a href="#" class="service-tag">EMNLP 2024 (AC)</a>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2025 Your Name · Last updated: November 2025</p>
+        <p>© <span id="current-year">2025</span> Your Name · Last updated: November 2025</p>
         <div class="footer-links">
-            <a href="https://scholar.google.com/" target="_blank">Google Scholar</a>
-            <a href="https://github.com/" target="_blank">GitHub</a>
-            <a href="#" target="_blank">University</a>
+            <a href="https://scholar.google.com/" target="_blank" aria-label="Google Scholar">Google Scholar</a>
+            <a href="https://github.com/" target="_blank" aria-label="GitHub">GitHub</a>
+            <a href="#" target="_blank" aria-label="University Website">University</a>
         </div>
     </footer>
 
     <script>
-        // Smooth scroll
+        // 动态更新年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // 为可访问性设置焦点
+                    if (target.id === 'main-content') {
+                        target.setAttribute('tabindex', '-1');
+                        target.focus();
+                    }
                 }
             });
+        });
+        
+        // 阅读进度条
+        const readingProgress = document.getElementById('reading-progress');
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = scrolled / documentHeight;
+            readingProgress.style.transform = `scaleX(${progress})`;
+        });
+        
+        // 主题切换
+        const themeToggle = document.getElementById('theme-toggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // 检查本地存储的主题偏好
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const hasDarkTheme = document.documentElement.getAttribute('data-theme');
+            
+            if (hasDarkTheme) {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // 图片懒加载
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.getAttribute('data-src');
+                        
+                        if (src) {
+                            img.src = src;
+                            img.classList.add('loaded');
+                        }
+                        
+                        imageObserver.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('img.lazy').forEach(img => {
+                imageObserver.observe(img);
+            });
+        } else {
+            // 回退方案：直接加载所有图片
+            document.querySelectorAll('img.lazy').forEach(img => {
+                const src = img.getAttribute('data-src');
+                if (src) {
+                    img.src = src;
+                    img.classList.add('loaded');
+                }
+            });
+        }
+        
+        // 打印按钮功能（可选）
+        const addPrintButton = () => {
+            const printButton = document.createElement('button');
+            printButton.innerHTML = '🖨️ 打印此页';
+            printButton.style.cssText = `
+                position: fixed;
+                bottom: 70px;
+                right: 20px;
+                background: var(--bg-white);
+                border: 1px solid var(--border);
+                border-radius: 20px;
+                padding: 8px 16px;
+                font-size: 0.8rem;
+                cursor: pointer;
+                z-index: 98;
+                box-shadow: var(--shadow-md);
+                transition: var(--transition);
+            `;
+            printButton.addEventListener('click', () => window.print());
+            printButton.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = 'var(--shadow-lg)';
+            });
+            printButton.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'var(--shadow-md)';
+            });
+            document.body.appendChild(printButton);
+        };
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            addPrintButton();
         });
     </script>
 </body>
