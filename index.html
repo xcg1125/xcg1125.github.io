@@ -87,13 +87,15 @@
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
             color: var(--text-muted);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .nav-links a:hover {
@@ -623,6 +625,222 @@
             font-weight: 500;
         }
 
+        /* 新增：学科竞赛模块样式 */
+        .competition-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .competition-item {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            transition: all 0.2s;
+        }
+
+        .competition-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .competition-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .competition-title .prize {
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .competition-title .prize.first {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .competition-title .prize.second {
+            background: #e0e7ff;
+            color: #3730a3;
+        }
+
+        .competition-title .prize.third {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .competition-details {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .competition-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .competition-student {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* 新增：课程模块样式 */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .course-item {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            transition: all 0.2s;
+        }
+
+        .course-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .course-code {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .course-semester {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding: 2px 8px;
+            background: var(--bg-light);
+            border-radius: 12px;
+        }
+
+        .course-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .course-level {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .course-level .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e0e7ff;
+            color: #3730a3;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-right: 6px;
+        }
+
+        .course-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* 新增：专利模块样式 */
+        .patent-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .patent-item {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px 20px;
+            transition: all 0.2s;
+        }
+
+        .patent-item:hover {
+            border-color: var(--primary-light);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .patent-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .patent-details {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .patent-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .patent-status {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        .patent-status.granted {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .patent-status.pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .patent-authors {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .patent-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
@@ -708,6 +926,9 @@
                 <a href="#news">News</a>
                 <a href="#publications">Publications</a>
                 <a href="#projects">Projects</a>
+                <a href="#competitions">Competitions</a>
+                <a href="#courses">Courses</a>
+                <a href="#patents">Patents</a>
                 <a href="#students">Students</a>
                 <a href="#awards">Awards</a>
                 <a href="#services">Services</a>
@@ -716,14 +937,9 @@
     </nav>
 
     <main class="container">
-        <!-- ==================== Profile Section - Zitai Wang Style ==================== -->
+        <!-- ==================== Profile Section ==================== -->
         <section class="profile" id="about">
             <div class="profile-photo">YN</div>
-            <!-- 如果有照片，用下面的代码替换上面的 div：
-            <div class="profile-photo">
-                <img src="your-photo.jpg" alt="Your Name">
-            </div>
-            -->
             <div class="profile-info">
                 <h1>Your Name <span class="cn-name">(中文名)</span></h1>
                 <p class="profile-position">
@@ -888,45 +1104,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- 研究方向三 -->
-            <div class="pub-category">
-                <div class="pub-category-title">🎯 研究方向三 世界模型</div>
-                
-                <div class="pub-item">
-                    <div class="pub-title">
-                        <a href="#" target="_blank">Structurally Refined Graph Transformer for Multimodal Recommendation</a>
-                    </div>
-                    <div class="pub-authors">
-                        Shi K (本科生), Zhang Y, <span class="me">Your Name*</span>.
-                    </div>
-                    <div class="pub-venue">IEEE Transactions on Multimedia (TMM), 2025.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag sci-1">SCI一区</span>
-                        <span class="pub-tag ccf-b">CCF B</span>
-                    </div>
-                </div>
-
-                <div class="pub-item">
-                    <div class="pub-title">
-                        <a href="#" target="_blank">A Unified Generalization Analysis of Re-Weighting and Logit-Adjustment for Imbalanced Learning</a>
-                    </div>
-                    <div class="pub-authors">
-                        <span class="me">Your Name</span>, Xu Q, Yang Z, et al.
-                    </div>
-                    <div class="pub-venue">Neural Information Processing Systems (NeurIPS), 2023.</div>
-                    <div class="pub-tags">
-                        <span class="pub-tag ccf-a">CCF A</span>
-                        <span class="pub-tag spotlight">Spotlight 3.1%</span>
-                    </div>
-                    <div class="pub-links">
-                        <a href="#" target="_blank" class="pub-link">[Paper]</a>
-                        <a href="#" target="_blank" class="pub-link">[Code]</a>
-                        <a href="#" target="_blank" class="pub-link">[Video]</a>
-                    </div>
-                </div>
-            </div>
-            
         </section>
 
         <!-- ==================== Projects Section ==================== -->
@@ -959,6 +1136,258 @@
                     <div class="project-content">
                         <div class="project-title">国家自然科学基金面上项目（项目编号）</div>
                         <div class="project-role">参与</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 新增：学科竞赛 Section ==================== -->
+        <section class="section" id="competitions">
+            <h2 class="section-title"><span class="icon">🏆</span> 学科竞赛 / Competitions</h2>
+            <div class="competition-list">
+                <div class="competition-item">
+                    <div class="competition-title">
+                        "挑战杯"全国大学生课外学术科技作品竞赛
+                        <span class="prize first">全国一等奖</span>
+                    </div>
+                    <div class="competition-details">
+                        项目：基于知识图谱的多模态智能推荐系统
+                    </div>
+                    <div class="competition-role">
+                        指导老师：Your Name
+                    </div>
+                    <div class="competition-student">
+                        参赛学生：XXX、XXX、XXX（2024年）
+                    </div>
+                </div>
+                
+                <div class="competition-item">
+                    <div class="competition-title">
+                        "互联网+"大学生创新创业大赛
+                        <span class="prize second">省赛金奖</span>
+                    </div>
+                    <div class="competition-details">
+                        项目：智能教育知识图谱构建与应用平台
+                    </div>
+                    <div class="competition-role">
+                        指导老师：Your Name
+                    </div>
+                    <div class="competition-student">
+                        参赛学生：XXX、XXX、XXX（2023年）
+                    </div>
+                </div>
+                
+                <div class="competition-item">
+                    <div class="competition-title">
+                        全国大学生计算机设计大赛
+                        <span class="prize first">全国一等奖</span>
+                    </div>
+                    <div class="competition-details">
+                        项目：基于深度学习的医学图像分析系统
+                    </div>
+                    <div class="competition-role">
+                        指导老师：Your Name
+                    </div>
+                    <div class="competition-student">
+                        参赛学生：XXX、XXX（2022年）
+                    </div>
+                </div>
+                
+                <div class="competition-item">
+                    <div class="competition-title">
+                        ACM国际大学生程序设计竞赛（ICPC）
+                        <span class="prize third">区域赛铜奖</span>
+                    </div>
+                    <div class="competition-details">
+                        亚洲区预选赛（南京站）
+                    </div>
+                    <div class="competition-role">
+                        指导老师：Your Name
+                    </div>
+                    <div class="competition-student">
+                        参赛学生：XXX、XXX、XXX（2023年）
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 新增：课程 Section ==================== -->
+        <section class="section" id="courses">
+            <h2 class="section-title"><span class="icon">📚</span> 授课课程 / Courses</h2>
+            <div class="course-grid">
+                <div class="course-item">
+                    <div class="course-header">
+                        <span class="course-code">CS101</span>
+                        <span class="course-semester">2025春季</span>
+                    </div>
+                    <h3 class="course-name">人工智能导论</h3>
+                    <div class="course-level">
+                        <span class="tag">本科生</span>
+                        <span class="tag">专业必修</span>
+                    </div>
+                    <p class="course-description">
+                        介绍人工智能的基本概念、方法和技术，包括搜索、知识表示、机器学习、自然语言处理等。注重理论与实践结合，培养学生解决实际问题的能力。
+                    </p>
+                </div>
+                
+                <div class="course-item">
+                    <div class="course-header">
+                        <span class="course-code">CS301</span>
+                        <span class="course-semester">2024秋季</span>
+                    </div>
+                    <h3 class="course-name">机器学习</h3>
+                    <div class="course-level">
+                        <span class="tag">本科生</span>
+                        <span class="tag">专业选修</span>
+                    </div>
+                    <p class="course-description">
+                        涵盖机器学习的基本理论和算法，包括监督学习、无监督学习、深度学习等。通过课程项目实践，学生将掌握机器学习模型的构建和评估方法。
+                    </p>
+                </div>
+                
+                <div class="course-item">
+                    <div class="course-header">
+                        <span class="course-code">CS501</span>
+                        <span class="course-semester">2025春季</span>
+                    </div>
+                    <h3 class="course-name">知识图谱</h3>
+                    <div class="course-level">
+                        <span class="tag">研究生</span>
+                        <span class="tag">专业选修</span>
+                    </div>
+                    <p class="course-description">
+                        深入讲解知识图谱的理论、构建方法和应用技术。内容包括知识表示、知识获取、知识推理、知识图谱应用等前沿研究方向。
+                    </p>
+                </div>
+                
+                <div class="course-item">
+                    <div class="course-header">
+                        <span class="course-code">CS601</span>
+                        <span class="course-semester">2024秋季</span>
+                    </div>
+                    <h3 class="course-name">高级自然语言处理</h3>
+                    <div class="course-level">
+                        <span class="tag">研究生</span>
+                        <span class="tag">专业选修</span>
+                    </div>
+                    <p class="course-description">
+                        探讨自然语言处理的前沿技术和应用，包括预训练语言模型、文本生成、机器翻译、情感分析等。结合最新研究成果进行案例分析。
+                    </p>
+                </div>
+                
+                <div class="course-item">
+                    <div class="course-header">
+                        <span class="course-code">CS201</span>
+                        <span class="course-semester">2023春季</span>
+                    </div>
+                    <h3 class="course-name">数据结构与算法</h3>
+                    <div class="course-level">
+                        <span class="tag">本科生</span>
+                        <span class="tag">专业基础</span>
+                    </div>
+                    <p class="course-description">
+                        系统讲解基本数据结构和经典算法，培养学生算法设计与分析能力，为后续专业课程学习奠定基础。
+                    </p>
+                </div>
+                
+                <div class="course-item">
+                    <div class="course-header">
+                        <span class="course-code">CS401</span>
+                        <span class="course-semester">2023秋季</span>
+                    </div>
+                    <h3 class="course-name">推荐系统</h3>
+                    <div class="course-level">
+                        <span class="tag">本科生</span>
+                        <span class="tag">专业选修</span>
+                    </div>
+                    <p class="course-description">
+                        介绍推荐系统的基本原理、算法设计和评估方法，包括协同过滤、内容推荐、混合推荐等，结合实际案例分析。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 新增：专利 Section ==================== -->
+        <section class="section" id="patents">
+            <h2 class="section-title"><span class="icon">💡</span> 专利成果 / Patents</h2>
+            <div class="patent-list">
+                <div class="patent-item">
+                    <div class="patent-title">
+                        一种基于知识图谱的多模态推荐方法及系统
+                    </div>
+                    <div class="patent-details">
+                        <span class="patent-number">ZL202310123456.7</span>
+                        <span class="patent-status granted">已授权</span>
+                    </div>
+                    <div class="patent-authors">
+                        发明人：Your Name、XXX、XXX
+                    </div>
+                    <div class="patent-date">
+                        授权日期：2024年5月20日
+                    </div>
+                </div>
+                
+                <div class="patent-item">
+                    <div class="patent-title">
+                        基于深度学习的图像情感分析方法及装置
+                    </div>
+                    <div class="patent-details">
+                        <span class="patent-number">CN202410987654.3</span>
+                        <span class="patent-status pending">实质审查</span>
+                    </div>
+                    <div class="patent-authors">
+                        发明人：Your Name、XXX、XXX、XXX
+                    </div>
+                    <div class="patent-date">
+                        申请日期：2024年3月15日
+                    </div>
+                </div>
+                
+                <div class="patent-item">
+                    <div class="patent-title">
+                        一种面向教育领域的知识图谱构建系统
+                    </div>
+                    <div class="patent-details">
+                        <span class="patent-number">ZL202210876543.2</span>
+                        <span class="patent-status granted">已授权</span>
+                    </div>
+                    <div class="patent-authors">
+                        发明人：XXX、Your Name、XXX
+                    </div>
+                    <div class="patent-date">
+                        授权日期：2023年11月30日
+                    </div>
+                </div>
+                
+                <div class="patent-item">
+                    <div class="patent-title">
+                        基于联邦学习的隐私保护推荐系统及方法
+                    </div>
+                    <div class="patent-details">
+                        <span class="patent-number">CN202311234567.8</span>
+                        <span class="patent-status pending">实质审查</span>
+                    </div>
+                    <div class="patent-authors">
+                        发明人：Your Name、XXX
+                    </div>
+                    <div class="patent-date">
+                        申请日期：2023年8月10日
+                    </div>
+                </div>
+                
+                <div class="patent-item">
+                    <div class="patent-title">
+                        一种文本情感分析方法及装置
+                    </div>
+                    <div class="patent-details">
+                        <span class="patent-number">ZL202110765432.1</span>
+                        <span class="patent-status granted">已授权</span>
+                    </div>
+                    <div class="patent-authors">
+                        发明人：Your Name、XXX、XXX
+                    </div>
+                    <div class="patent-date">
+                        授权日期：2022年9月25日
                     </div>
                 </div>
             </div>
